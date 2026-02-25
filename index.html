@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orthopedics AI Tutor - NEET PG</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="title">🦴 Orthopedics AI Tutor</div>
+            <div class="subtitle">Intelligent Teaching for NEET PG</div>
+        </div>
+
+        <!-- API Setup -->
+        <div id="setupScreen" class="card">
+            <h2>🔑 API Key Setup</h2>
+            <div class="alert alert-info">
+                <strong>Get your API key:</strong><br>
+                1. Go to <a href="https://console.anthropic.com" target="_blank">console.anthropic.com</a><br>
+                2. Create account (free)<br>
+                3. Create API Key<br>
+                4. Paste below
+            </div>
+            <div id="apiError" class="alert alert-error hidden"></div>
+            <input type="password" id="apiKeyInput" class="api-input" placeholder="sk-ant-api03-...">
+            <button class="btn btn-primary" onclick="app.saveApiKey()">Save & Test</button>
+        </div>
+
+        <!-- Topic Selection -->
+        <div id="topicScreen" class="card hidden">
+            <h2>📚 Select Topic</h2>
+            <div class="topic-grid">
+                <button class="topic-btn" onclick="app.startTopic('Colles Fracture')">
+                    🦴 Colles Fracture
+                </button>
+            </div>
+            <div style="margin-top: 1rem; text-align: center;">
+                <a href="#" onclick="app.resetAPI()" class="link">Change API Key</a>
+            </div>
+        </div>
+
+        <!-- Learning Screen -->
+        <div id="learningScreen" class="card hidden">
+            <h2 id="topicTitle"></h2>
+            
+            <div class="phases">
+                <span class="phase active" id="phase1">📝 SAQ</span>
+                <span class="phase" id="phase2">🔄 Mixed</span>
+                <span class="phase" id="phase3">✅ MCQ</span>
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressBar"></div>
+            </div>
+            <div class="progress-text" id="progressText"></div>
+
+            <div class="chat-container" id="chatContainer"></div>
+
+            <div class="input-area">
+                <textarea id="userInput" placeholder="Type your answer..."></textarea>
+                <button class="btn btn-send" onclick="app.sendMessage()" id="sendBtn">Send</button>
+            </div>
+
+            <div style="text-align: center; margin-top: 1rem;">
+                <a href="#" onclick="app.backToTopics()" class="link">← Back to Topics</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
